@@ -6949,11 +6949,24 @@ div.demo img {
   text-align: center;
   font-weight: 900;
   font-size: 30px;
-  color: var(--tp-common-white);
+  color: var(--tp-text-2);
   background: transparent;
-  border: 1px solid var(--tp-common-white);
-  animation: pulse 2s infinite;
+  border: 1px solid var(--tp-text-2);
+  animation: pulse 4s infinite;
 }
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.2); /* Adjust opacity to make it a very slight black */
+  }
+  35% {
+    box-shadow: 0 0 0 20px rgba(0, 0, 0, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 20px rgba(0, 0, 0, 0);
+  }
+}
+
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
   .tp-hero-play-btn a {
     top: 235px;
