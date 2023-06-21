@@ -6789,6 +6789,9 @@ div.demo img {
   animation-delay: 1s;
   animation-duration: 1.2s;
 }
+.tp-hero-shape{
+  padding-left: 0px !important;
+}
 .tp-hero-shape .shape-1 {
   position: absolute;
   top: -55px;
@@ -6852,6 +6855,7 @@ div.demo img {
     height: 590px;
     width: 600px;
     left: -50px;
+    /* padding-left: 0px !important; */
   }
 }
 @media only screen and (min-width: 1200px) and (max-width: 1399px) {
@@ -8239,8 +8243,8 @@ div.demo img {
   transition: all 0.3s ease-in-out;
 }
 .tp-service-wrapper:hover .tp-service-icon {
-  visibility: hidden;
-  opacity: 0;
+  /* visibility: hidden;
+  opacity: 0; */
 }
 .tp-service-wrapper:hover .hide-text {
   visibility: visible;

@@ -6,6 +6,98 @@
 
 ****************************************************/
 
+// displaying service data
+document.addEventListener('DOMContentLoaded', function () {
+	if (window.location.pathname.includes('service.html')) {
+		// Code for index.html
+		fetch('services.json')
+			.then(function (response) {
+				return response.json()
+			})
+			.then(function (data) {
+				data.forEach(service => {
+					const container = document.getElementById('service-container');
+					const words = service.description.split(' ');
+					let truncatedDescription = words.slice(0, 10).join(' ');
+
+					// Add "..." if the description is longer than 10 words
+					if (words.length > 10) {
+						truncatedDescription += '...';
+					}
+					// console.log(truncatedDescription)
+
+					const cardElement = document.createElement('div');
+					cardElement.classList.add('col-xl-3', 'col-lg-4', 'col-md-6');
+
+					const cardContent = `
+    <div class="tp-service-3-content breadcrumb-item mb-30 service-card">
+      <div class="tp-service-3-content-thumb">
+        <img src="assets/img/services/home-3/icon-1.png" alt="">
+      </div>
+      <h4 class="tp-service-breadcrumb-title"><a href="service-details.html?service=${service.id}" class="service-link" data-service-id="${service.id}">${service.name}</a></h4>
+      <p>${truncatedDescription}</p>
+      <div class="tp-service-btn">
+        <a href="service-details.html?service=${service.id}" class="service-link" data-service-id="${service.id}">Read More <i class="fa-solid fa-arrow-up-right"></i></a>
+      </div>
+    </div>
+  `;
+
+					cardElement.innerHTML = cardContent;
+					container.appendChild(cardElement);
+				})
+
+			})
+		const serviceLinks = document.querySelectorAll('.service-link');
+		serviceLinks.forEach(function (link) {
+			link.addEventListener('click', function (event) {
+				event.preventDefault();
+				const serviceId = link.dataset.serviceId; // Update attribute name to serviceId
+				window.location.href = 'service-details.html?service=' + encodeURIComponent(serviceId);
+				displayServiceDetail(serviceId); // Pass serviceId to the function
+			});
+		});
+	}
+	else if (window.location.pathname.includes('service-details.html')) {
+		// Code for service-detail.html
+		const params = new URLSearchParams(window.location.search);
+		const serviceId = params.get('service');
+		console.log(serviceId)
+
+		fetch('services.json')
+			.then(function (response) {
+				return response.json();
+			})
+			.then(function (data) {
+				const service = data.find(function (item) {
+					return item.id === serviceId;
+
+				});
+				if (service) {
+					displayServiceDetail(service);
+				} else {
+					document.getElementById('service-heading').textContent = 'Service not found.';
+				}
+			})
+			.catch(function (error) {
+				console.error('Error:', error);
+				document.getElementById('service-detail-container').textContent = 'An error occurred.';
+			});
+	}
+});
+
+function displayServiceDetail(service) {
+	const title = document.getElementById('service-heading');
+	const description = document.getElementById('service-description')
+	console.log(service)
+
+	title.textContent = service.name;
+	description.textContent = service.description
+
+
+}
+
+
+
 (function ($) {
 	"use strict";
 
@@ -67,23 +159,23 @@
 	////////////////////////////////////////////////////
 	// 06. Sticky Header Js
 	windowOn.on('scroll', function () {
-		var scroll = $(window).scrollTop();	
+		var scroll = $(window).scrollTop();
 		if (scroll < 100) {
 			$("#header-sticky").removeClass("tp-header-sticky");
 		} else {
 			$("#header-sticky").addClass("tp-header-sticky");
 		}
 	});
-	
+
 
 	if ($('.tp-header-height').length > 0) {
 		var headerHeight = document.querySelector(".tp-header-height");
-			  
+
 		var setHeaderHeight = headerHeight.offsetHeight;
-			  
+
 		$(".tp-header-height").each(function () {
 			$(this).css({
-				'height' : setHeaderHeight + 'px'
+				'height': setHeaderHeight + 'px'
 			});
 		});
 	}
@@ -91,23 +183,23 @@
 
 	///////////////////////////////////////////////////
 	// 02. SubMenu Dropdown Toggle
-	var header_icon = 
-	`<span class="header-icon">
+	var header_icon =
+		`<span class="header-icon">
 		<svg width="11" height="11" viewBox="0 0 12 11" fill="none" xmlns="http://www.w3.org/2000/svg">
 		<path d="M6.04088 0L0.535156 4.125V11H4.26484V8.59381C4.26484 7.64165 5.05698 6.87506 6.04088 6.87506C7.02477 6.87506 7.81692 7.64165 7.81692 8.59381V11H11.5466V4.125L6.04088 0Z" fill="#05DAC3"/></svg>
 	</span>`;
-  	$(header_icon).insertBefore('.menu-icon nav');
+	$(header_icon).insertBefore('.menu-icon nav');
 
 
 
 	// for header language
 	if ($("#tp-header-lang-toggle").length > 0) {
-		window.addEventListener('click', function(e){
-	
-			if (document.getElementById('tp-header-lang-toggle').contains(e.target)){
+		window.addEventListener('click', function (e) {
+
+			if (document.getElementById('tp-header-lang-toggle').contains(e.target)) {
 				$(".tp-lang-list").toggleClass("tp-lang-list-open");
 			}
-			else{
+			else {
 				$(".tp-lang-list").removeClass("tp-lang-list-open");
 			}
 		});
@@ -115,12 +207,12 @@
 
 	// for header usd
 	if ($("#tp-header-usd-toggle").length > 0) {
-		window.addEventListener('click', function(e){
-	
-			if (document.getElementById('tp-header-usd-toggle').contains(e.target)){
+		window.addEventListener('click', function (e) {
+
+			if (document.getElementById('tp-header-usd-toggle').contains(e.target)) {
 				$(".tp-usd-list").toggleClass("tp-usd-list-open");
 			}
-			else{
+			else {
 				$(".tp-usd-list").removeClass("tp-usd-list-open");
 			}
 		});
@@ -128,10 +220,10 @@
 
 
 	/////// add tag //////
-	$('.tp-main-menu ul li a').each(function(){
+	$('.tp-main-menu ul li a').each(function () {
 		$(this).wrapInner("<span></span>");
-		});
-	
+	});
+
 
 	////////////////////////////////////////////////////
 	// 03. Search Js
@@ -140,7 +232,7 @@
 		$(".search-popup-overlay").addClass("search-popup-overlay-open");
 	});
 
-	
+
 	$(".search-close-btn").on("click", function () {
 		$(".search__popup").removeClass("search-opened");
 		$(".search-popup-overlay").removeClass("search-popup-overlay-open");
@@ -164,45 +256,45 @@
 	// 14. tp btn hover
 	if ($(".tp-btn-hover").length > 0) {
 		$('.tp-btn-hover').on('mouseenter', function (e) {
-				var parentOffset = $(this).offset(),
-					relX = e.pageX - parentOffset.left,
-					relY = e.pageY - parentOffset.top;
-				$(this).find('b').css({ top: relY, left: relX })
-		});
-	
-		$('.tp-btn-hover').on('mouseout', function (e) {
-	
 			var parentOffset = $(this).offset(),
 				relX = e.pageX - parentOffset.left,
 				relY = e.pageY - parentOffset.top;
 			$(this).find('b').css({ top: relY, left: relX })
-	
+		});
+
+		$('.tp-btn-hover').on('mouseout', function (e) {
+
+			var parentOffset = $(this).offset(),
+				relX = e.pageX - parentOffset.left,
+				relY = e.pageY - parentOffset.top;
+			$(this).find('b').css({ top: relY, left: relX })
+
 		});
 	}
 
 	if ($(".tp-btn-hover-clear").length > 0) {
 		$('.tp-btn-hover-clear').on('mouseenter', function (e) {
-				var parentOffset = $(this).offset(),
-					relX = e.pageX - parentOffset.left,
-					relY = e.pageY - parentOffset.top;
-				$(this).find('b').css({ top: relY, left: relX })
-		});
-	
-		$('.tp-btn-hover-clear').on('mouseout', function (e) {
-	
 			var parentOffset = $(this).offset(),
 				relX = e.pageX - parentOffset.left,
 				relY = e.pageY - parentOffset.top;
 			$(this).find('b').css({ top: relY, left: relX })
-	
+		});
+
+		$('.tp-btn-hover-clear').on('mouseout', function (e) {
+
+			var parentOffset = $(this).offset(),
+				relX = e.pageX - parentOffset.left,
+				relY = e.pageY - parentOffset.top;
+			$(this).find('b').css({ top: relY, left: relX })
+
 		});
 	}
 
 
-	
+
 
 	// settings append in body
-	function tp_settings_append($x){
+	function tp_settings_append($x) {
 		var settings = $('body');
 		let dark;
 		$x == true ? dark = 'd-block' : dark = 'd-none';
@@ -297,7 +389,7 @@
 		   </div>
 		</div>
 	 </div>`;
-	 settings.append(settings_html);
+		settings.append(settings_html);
 	}
 	// tp_settings_append(true); // if want to enable dark light mode then send "true";
 
@@ -474,32 +566,32 @@
 		});
 
 
-		function tp_set_check(clr){
+		function tp_set_check(clr) {
 			const arr = Array.from(document.querySelectorAll('[data-color]'));
-	
+
 			var a = localStorage.getItem('tp_color_scheme');
 
-			let test =  arr.map(color =>{
+			let test = arr.map(color => {
 				let datacolor = color.getAttribute('data-color');
-				
+
 				return datacolor;
 			}).filter(color => color == a);
-			
+
 			var arrLength = test.length;
 
-			if(arrLength == 0){
+			if (arrLength == 0) {
 				$('.tp-color-active').removeClass('active');
-			}else{
+			} else {
 				$('.tp-color-active').addClass('active');
 			}
 		}
 
-		function tp_check_color(){
+		function tp_check_color() {
 			var a = localStorage.getItem('tp_color_scheme');
 
 			var list = $(`[data-color="${a}"]`);
 
-			list.parent().addClass('active').parent().siblings().find('.tp-color-active').removeClass('active')		
+			list.parent().addClass('active').parent().siblings().find('.tp-color-active').removeClass('active')
 		}
 		tp_check_color();
 
@@ -674,33 +766,33 @@
 			$input.change();
 			return false;
 		});
-	
+
 		$('.tp-cart-plus').on('click', function () {
 			var $input = $(this).parent().find('input');
 			$input.val(parseInt($input.val()) + 1);
 			$input.change();
 			return false;
 		});
-	
-	
+
+
 		////////////////////////////////////////////////////
 		// 17. Show Login Toggle Js
 		$('#showlogin').on('click', function () {
 			$('#checkout-login').slideToggle(900);
 		});
-	
+
 		////////////////////////////////////////////////////
 		// 18. Show Coupon Toggle Js
 		$('#showcoupon').on('click', function () {
 			$('#checkout_coupon').slideToggle(900);
 		});
-	
+
 		////////////////////////////////////////////////////
 		// 19. Create An Account Toggle Js
 		$('#cbox').on('click', function () {
 			$('#cbox_info').slideToggle(900);
 		});
-	
+
 		////////////////////////////////////////////////////
 		// 20. Shipping Box Toggle Js
 		$('#ship-box').on('click', function () {
@@ -771,12 +863,12 @@
 	// scroll rotate
 	let reloadClassName = document.getElementById("reload");
 
-	if(reloadClassName !== null){
+	if (reloadClassName !== null) {
 		window.onscroll = function () {
 			scrollRotate();
 		};
 		function scrollRotate() {
-			reloadClassName.style.transform = "rotate(" + window.pageYOffset/2 + "deg)";
+			reloadClassName.style.transform = "rotate(" + window.pageYOffset / 2 + "deg)";
 		}
 	}
 
@@ -789,86 +881,86 @@
 	// Jquery Appear raidal
 	if (typeof ($.fn.knob) != 'undefined') {
 		$('.knob').each(function () {
-		var $this = $(this),
-		knobVal = $this.attr('data-rel');
+			var $this = $(this),
+				knobVal = $this.attr('data-rel');
 
-		$this.knob({
-		'draw': function () {
-			$(this.i).val(this.cv + '%')
-		}
-		});
+			$this.knob({
+				'draw': function () {
+					$(this.i).val(this.cv + '%')
+				}
+			});
 
-		$this.appear(function () {
-		$({
-			value: 0
-		}).animate({
-			value: knobVal
-		}, {
-			duration: 2000,
-			easing: 'swing',
-			step: function () {
-			$this.val(Math.ceil(this.value)).trigger('change');
-			}
+			$this.appear(function () {
+				$({
+					value: 0
+				}).animate({
+					value: knobVal
+				}, {
+					duration: 2000,
+					easing: 'swing',
+					step: function () {
+						$this.val(Math.ceil(this.value)).trigger('change');
+					}
+				});
+			}, {
+				accX: 0,
+				accY: -150
+			});
 		});
-		}, {
-		accX: 0,
-		accY: -150
-		});
-	});
 	}
 
 
 	//////////////////////////
 	// hero 1 active
 	if ($('.hero-active-1').length > 0) {
-	var slider = new Swiper('.hero-active-1', {
-		slidesPerView: 1,
-		spaceBetween: 0,
-		loop: true,
-		effect: 'fade',
-		autoplay: {
-			delay: 5000,
-		},
-		// Navigation arrows
-		navigation: {
-			nextEl: ".hero-button-next-1",
-			prevEl: ".hero-button-prev-1",
-		},
+		var slider = new Swiper('.hero-active-1', {
+			slidesPerView: 1,
+			spaceBetween: 0,
+			loop: true,
+			effect: 'fade',
+			autoplay: {
+				delay: 5000,
+			},
+			// Navigation arrows
+			navigation: {
+				nextEl: ".hero-button-next-1",
+				prevEl: ".hero-button-prev-1",
+			},
 		});
-		}
+	}
 
 
 	//////////////////////////
 	// hero 2 active
 	if ($('.hero-active-2').length > 0) {
-	var slider = new Swiper('.hero-active-2', {
-		slidesPerView: 1,
-		spaceBetween: 0,
-		loop: true,
-		// Navigation arrows
-		navigation: {
-			nextEl: ".hero-button-next-1",
-			prevEl: ".hero-button-prev-1",
-		},
-		breakpoints: {
-			'1200': {
-				
+		var slider = new Swiper('.hero-active-2', {
+			slidesPerView: 1,
+			spaceBetween: 0,
+			loop: true,
+			// Navigation arrows
+			navigation: {
+				nextEl: ".hero-button-next-1",
+				prevEl: ".hero-button-prev-1",
 			},
-			'992': {
-				
+			breakpoints: {
+				'1200': {
+
+				},
+				'992': {
+
+				},
+				'768': {
+
+				},
+				'576': {
+
+				},
+				'0': {
+
+				},
 			},
-			'768': {
-				
-			},
-			'576': {
-				
-			},
-			'0': {
-				
-			},
-		},
 		});
-		}
+	}
 
 	// hero 3 active
 	if ($('.hero-active-3').length > 0) {
@@ -888,131 +980,131 @@
 			},
 			breakpoints: {
 				'1200': {
-					
+
 				},
 				'992': {
-					
+
 				},
 				'768': {
-					
+
 				},
 				'576': {
-					
+
 				},
 				'0': {
-					
+
 				},
 			},
 		});
-		}
-		
+	}
+
 
 	// about active
 	if ($('.about-active').length > 0) {
-	var slider = new Swiper('.about-active', {
-		slidesPerView: 3,
-		spaceBetween: 82,
-		loop: true,
-		// Navigation arrows
-		navigation: {
-			nextEl: ".about-button-next-1",
-			prevEl: ".about-button-prev-1",
-		},
-		breakpoints: {
-			'1860': {
-				
+		var slider = new Swiper('.about-active', {
+			slidesPerView: 3,
+			spaceBetween: 82,
+			loop: true,
+			// Navigation arrows
+			navigation: {
+				nextEl: ".about-button-next-1",
+				prevEl: ".about-button-prev-1",
 			},
-			'1800': {
-				spaceBetween: 40,
+			breakpoints: {
+				'1860': {
+
+				},
+				'1800': {
+					spaceBetween: 40,
+				},
+				'1701': {
+
+				},
+				'1600': {
+
+				},
+				'1560': {
+
+				},
+				'1400': {
+					spaceBetween: 60,
+				},
+				'1200': {
+					spaceBetween: 30,
+					slidesPerView: 2,
+				},
+				'992': {
+					spaceBetween: 60,
+					slidesPerView: 2,
+				},
+				'767': {
+					slidesPerView: 2
+				},
+				'576': {
+					slidesPerView: 2
+				},
+				'0': {
+					slidesPerView: 1
+				},
 			},
-			'1701': {
-				
-			},
-			'1600': {
-				
-			},
-			'1560': {
-				
-			},
-			'1400': {
-				spaceBetween:60,
-			},
-			'1200': {
-				spaceBetween:30,
-				slidesPerView: 2,
-			},
-			'992': {
-				spaceBetween:60,
-				slidesPerView: 2,
-			},
-			'767': {
-				slidesPerView:2
-			},
-			'576': {
-				slidesPerView:2
-			},
-			'0': {
-				slidesPerView:1
-			},
-		},
-	});
+		});
 	}
 
 
 	// about active
 	if ($('.blog-img-active').length > 0) {
-	var slider = new Swiper('.blog-img-active', {
-		slidesPerView: 1,
-		loop: true,
-		// Navigation arrows
-		navigation: {
-			nextEl: ".blog-button-next-1",
-			prevEl: ".blog-button-prev-1",
-		},
+		var slider = new Swiper('.blog-img-active', {
+			slidesPerView: 1,
+			loop: true,
+			// Navigation arrows
+			navigation: {
+				nextEl: ".blog-button-next-1",
+				prevEl: ".blog-button-prev-1",
+			},
 		});
-		}
+	}
 
 
 	// testimonial active
 	if ($('.testimonial-active').length > 0) {
-	var slider = new Swiper('.testimonial-active', {
-		slidesPerView: 3,
-		spaceBetween: 30,
-		loop: true,
-		centeredSlides: true,
-		breakpoints: {
-			'991': {
+		var slider = new Swiper('.testimonial-active', {
+			slidesPerView: 3,
+			spaceBetween: 30,
+			loop: true,
+			centeredSlides: true,
+			breakpoints: {
+				'991': {
+				},
+				'768': {
+					slidesPerView: 2,
+				},
+				'767': {
+					slidesPerView: 1,
+					spaceBetween: 15,
+				},
+				'576': {
+					slidesPerView: 1,
+				},
+				'0': {
+					slidesPerView: 1,
+				},
 			},
-			'768': {
-				slidesPerView:2,
-			},
-			'767': {
-				slidesPerView:1,
-				spaceBetween:15,
-			},
-			'576': {
-				slidesPerView:1,
-			},
-			'0': {
-				slidesPerView:1,
-			},
-			},
-			});
-		}
+		});
+	}
 
 
 	// testimonial active
 	if ($('.testimonial-2-active').length > 0) {
-	var slider = new Swiper('.testimonial-2-active', {
-		slidesPerView: 1,
-		spaceBetween: 30,
-		loop: true,
-		centeredSlides: true,
-		// Navigation arrows
-		navigation: {
-			nextEl: ".testimonial-button-next-1",
-			prevEl: ".testimonial-button-prev-1",
-		},
+		var slider = new Swiper('.testimonial-2-active', {
+			slidesPerView: 1,
+			spaceBetween: 30,
+			loop: true,
+			centeredSlides: true,
+			// Navigation arrows
+			navigation: {
+				nextEl: ".testimonial-button-next-1",
+				prevEl: ".testimonial-button-prev-1",
+			},
 		});
 	}
 
@@ -1020,12 +1112,12 @@
 	// service slider
 	if ($('.service-active').length > 0) {
 		new Splide('.service-active', {
-			type   : 'loop',
-			drag   : 'free',
+			type: 'loop',
+			drag: 'free',
 			pagination: false,
 			arrows: false,
 			perPage: 5,
-			gap:'30px',
+			gap: '30px',
 			breakpoints: {
 				1800: {
 					perPage: 5,
@@ -1042,9 +1134,9 @@
 				566: {
 					perPage: 1,
 				},
-			  },
-		  }).mount();
-		}
+			},
+		}).mount();
+	}
 
 
 	if ($(".tp-text-active").length > 0) {
@@ -1063,19 +1155,19 @@
 			pauseOnFocus: false,
 			pauseOnHover: true,
 			rtl: rtl_setting,
-		  });
+		});
 	}
 
 
 	// portfolio slider
 	if ($('.tp-feature-active-2').length > 0) {
 		new Splide('.tp-feature-active-2', {
-			type   : 'loop',
+			type: 'loop',
 			pagination: false,
 			arrows: false,
 			focus: 'center',
 			perPage: 1,
-			gap:'30px',
+			gap: '30px',
 			padding: '25%',
 			throttle: 300,
 			breakpoints: {
@@ -1084,15 +1176,15 @@
 				},
 				765: {
 					padding: '12%',
-					gap:'25px',
+					gap: '25px',
 				},
 				575: {
 					arrows: false,
 					padding: '0%',
 				},
-			  },
-		  }).mount();
-		}
+			},
+		}).mount();
+	}
 
 
 	// feature active
@@ -1103,55 +1195,55 @@
 			loop: true,
 			centeredSlides: true,
 			breakpoints: {
-				'1700':{
-					slidesPerView:4,
+				'1700': {
+					slidesPerView: 4,
 				},
-				'1400':{
-					slidesPerView:3,
+				'1400': {
+					slidesPerView: 3,
 				},
-				'1200':{
-					slidesPerView:2,
+				'1200': {
+					slidesPerView: 2,
 				},
 				'767': {
-					slidesPerView:2,
+					slidesPerView: 2,
 				},
 				'576': {
-					slidesPerView:1,
+					slidesPerView: 1,
 				},
 				'0': {
-					slidesPerView:1,
+					slidesPerView: 1,
 				},
-				},
-				});
-			}
+			},
+		});
+	}
 
 
 	//   testimonial active
 	if ($('.testimonial-3-active').length > 0) {
-		var main = new Splide( '.testimonial-3-active', {
-		  pagination : true,
-		  arrows     : false,
-		  type   	   : 'loop',
-		  breakpoints : {
-			  576: {
-				  perPage: 1
-			  },
+		var main = new Splide('.testimonial-3-active', {
+			pagination: true,
+			arrows: false,
+			type: 'loop',
+			breakpoints: {
+				576: {
+					perPage: 1
+				},
 			},
-		} );
-		
-		var thumbnails = new Splide( '.testimonial-navigation-active', {
-		  gap        : 0,
-		  pagination : false,
-		  arrows     : false,
-		  type   : 'loop',
-		  perPage: 1,
-		  isNavigation : true,
-		} );
-		
-		main.sync( thumbnails );
+		});
+
+		var thumbnails = new Splide('.testimonial-navigation-active', {
+			gap: 0,
+			pagination: false,
+			arrows: false,
+			type: 'loop',
+			perPage: 1,
+			isNavigation: true,
+		});
+
+		main.sync(thumbnails);
 		main.mount();
 		thumbnails.mount();
-	  }
+	}
 
 
 	// Brand
@@ -1161,7 +1253,7 @@
 		autoplay: {
 			delay: 100,
 		},
-		autoplay : true,
+		autoplay: true,
 		breakpoints: {
 			'1200': {
 				slidesPerView: 5,
@@ -1196,140 +1288,140 @@
 				prevEl: ".team-button-prev-1",
 			},
 			breakpoints: {
-				'1400':{
+				'1400': {
 					slidesPerView: 5,
 				},
-				'1200':{
+				'1200': {
 					slidesPerView: 4,
 				},
-				'992':{
-					slidesPerView:3,
+				'992': {
+					slidesPerView: 3,
 				},
 				'767': {
-					slidesPerView:3,
+					slidesPerView: 3,
 				},
 				'576': {
-					slidesPerView:2,
+					slidesPerView: 2,
 				},
 				'0': {
-					slidesPerView:1,
+					slidesPerView: 1,
 				},
-				},
-				});
-			}
-
-
-		// click to add remove class
-		$('.tp-faq-tab-content .accordion-item').on("click", function(){
-			$(this).addClass('tp-faq-active').siblings().removeClass('tp-faq-active');
+			},
 		});
+	}
+
+
+	// click to add remove class
+	$('.tp-faq-tab-content .accordion-item').on("click", function () {
+		$(this).addClass('tp-faq-active').siblings().removeClass('tp-faq-active');
+	});
 
 
 
-		//////////// mouse move js////////////
-		function bubbleMove(n, m){
-			if ((n).length > 0) {
-				var mousee = document.getElementById(m); 
-				
-				mousee?.addEventListener('mousemove', function(e) {
+	//////////// mouse move js////////////
+	function bubbleMove(n, m) {
+		if ((n).length > 0) {
+			var mousee = document.getElementById(m);
+
+			mousee?.addEventListener('mousemove', function (e) {
 				// Get dimensions of mousemove element
 				var r = this.getBoundingClientRect();
-				
+
 				// Set x and y values prop values based on center of mousemove element
 				this.style.setProperty('--x', e.clientX - (r.left + Math.floor(r.width / 2)))
 				this.style.setProperty('--y', e.clientY - (r.top + Math.floor(r.height / 2)))
-				});
-				
-				mousee?.addEventListener('mouseleave', function() {
+			});
+
+			mousee?.addEventListener('mouseleave', function () {
 				// Reset x and y prop values when no longer hovering
 				this.style.setProperty('--x', 1)
-				this.style.setProperty('--y', 1) 
-				});
-			}
+				this.style.setProperty('--y', 1)
+			});
 		}
+	}
 
-		if (('#mousemove').length > 0) {
-			bubbleMove('mousemove', 'mousemove');
-		}
+	if (('#mousemove').length > 0) {
+		bubbleMove('mousemove', 'mousemove');
+	}
 
-		/////// bubble effects////////
-		var $bubbles = $('.bubbles');
+	/////// bubble effects////////
+	var $bubbles = $('.bubbles');
 
-		function bubbles() {
+	function bubbles() {
 		// Settings
 		var min_bubble_count = 20, // Minimum number of bubbles
 			max_bubble_count = 60, // Maximum number of bubbles
 			min_bubble_size = 3, // Smallest possible bubble diameter (px)
 			max_bubble_size = 12; // Maximum bubble blur amount (px)
-		
+
 		// Calculate a random number of bubbles based on our min/max
 		var bubbleCount = min_bubble_count + Math.floor(Math.random() * (max_bubble_count + 1));
-		
+
 		// Create the bubbles
 		for (var i = 0; i < bubbleCount; i++) {
 			$bubbles.append('<div class="bubble-container"><div class="bubble"></div></div>');
 		}
-		
+
 		// Now randomise the various bubble elements
-		$bubbles.find('.bubble-container').each(function(){
-			
+		$bubbles.find('.bubble-container').each(function () {
+
 			// Randomise the bubble positions (0 - 100%)
 			var pos_rand = Math.floor(Math.random() * 101);
-			
+
 			// Randomise their size
 			var size_rand = min_bubble_size + Math.floor(Math.random() * (max_bubble_size + 15));
-			
+
 			// Randomise the time they start rising (0-15s)
 			var delay_rand = Math.floor(Math.random() * 16);
-			
+
 			// Randomise their speed (3-8s)
 			var speed_rand = 3 + Math.floor(Math.random() * 9);
-			
+
 			// Random blur
 			var blur_rand = Math.floor(Math.random() * 3);
-			
+
 			// Cache the this selector
 			var $this = $(this);
-			
+
 			// Apply the new styles
 			$this.css({
-			'left' : pos_rand + '%',
-			
-			'-webkit-animation-duration' : speed_rand + 's',
-			'-moz-animation-duration' : speed_rand + 's',
-			'-ms-animation-duration' : speed_rand + 's',
-			'animation-duration' : speed_rand + 's',
-			
-			'-webkit-animation-delay' : delay_rand + 's',
-			'-moz-animation-delay' : delay_rand + 's',
-			'-ms-animation-delay' : delay_rand + 's',
-			'animation-delay' : delay_rand + 's',
-			
-			'-webkit-filter' : 'blur(' + blur_rand  + 'px)',
-			'-moz-filter' : 'blur(' + blur_rand  + 'px)',
-			'-ms-filter' : 'blur(' + blur_rand  + 'px)',
-			'filter' : 'blur(' + blur_rand  + 'px)',
+				'left': pos_rand + '%',
+
+				'-webkit-animation-duration': speed_rand + 's',
+				'-moz-animation-duration': speed_rand + 's',
+				'-ms-animation-duration': speed_rand + 's',
+				'animation-duration': speed_rand + 's',
+
+				'-webkit-animation-delay': delay_rand + 's',
+				'-moz-animation-delay': delay_rand + 's',
+				'-ms-animation-delay': delay_rand + 's',
+				'animation-delay': delay_rand + 's',
+
+				'-webkit-filter': 'blur(' + blur_rand + 'px)',
+				'-moz-filter': 'blur(' + blur_rand + 'px)',
+				'-ms-filter': 'blur(' + blur_rand + 'px)',
+				'filter': 'blur(' + blur_rand + 'px)',
 			});
-			
+
 			$this.children('.bubble').css({
-			'width' : size_rand + 'px',
-			'height' : size_rand + 'px'
+				'width': size_rand + 'px',
+				'height': size_rand + 'px'
 			});
-			
+
 		});
-		}
-		bubbles();
+	}
+	bubbles();
 
 
 
-		/////////////////////////
-		// gsap animation
-		// title animation gsap
-		if ($('.title-anim-1').length > 0) {
-			// 25. Title Animation
-			let splitTitleLines = gsap.utils.toArray(".title-anim-1");
-			splitTitleLines.forEach(splitTextLine => {
-				const tl = gsap.timeline({
+	/////////////////////////
+	// gsap animation
+	// title animation gsap
+	if ($('.title-anim-1').length > 0) {
+		// 25. Title Animation
+		let splitTitleLines = gsap.utils.toArray(".title-anim-1");
+		splitTitleLines.forEach(splitTextLine => {
+			const tl = gsap.timeline({
 				scrollTrigger: {
 					trigger: splitTextLine,
 					start: 'top 90%',
@@ -1338,22 +1430,22 @@
 					markers: false,
 					toggleActions: 'play none none none'
 				}
-				});
-	
-				const itemSplitted = new SplitText(splitTextLine, { type: "words, lines" });
-				gsap.set(splitTextLine, { perspective: 300});
-				itemSplitted.split({ type: "lines" })
-				tl.from(itemSplitted.lines, { duration: 1, delay: 0.3, opacity: 0, rotationX: -60, force3D: true, transformOrigin: "top center -50", stagger: 0.2 });
-			});	
-			}
+			});
+
+			const itemSplitted = new SplitText(splitTextLine, { type: "words, lines" });
+			gsap.set(splitTextLine, { perspective: 300 });
+			itemSplitted.split({ type: "lines" })
+			tl.from(itemSplitted.lines, { duration: 1, delay: 0.3, opacity: 0, rotationX: -60, force3D: true, transformOrigin: "top center -50", stagger: 0.2 });
+		});
+	}
 
 
-			// Text Animation
-			let splitTextLines = gsap.utils.toArray("title-anime-2");
+	// Text Animation
+	let splitTextLines = gsap.utils.toArray("title-anime-2");
 
-			splitTextLines.forEach((splitTextLine) => {
-			const tl = gsap.timeline({
-				scrollTrigger: {
+	splitTextLines.forEach((splitTextLine) => {
+		const tl = gsap.timeline({
+			scrollTrigger: {
 				trigger: splitTextLine,
 				start: "top 90%",
 				duration: 2,
@@ -1361,28 +1453,28 @@
 				// scrub: false,
 				markers: false,
 				toggleActions: "play none none none",
-				},
-			});
-		
-			const itemSplitted = new SplitText(splitTextLine, { type: "lines", linesClass: "lineChild" });
-			gsap.set(splitTextLine, { perspective: 400 });
-			itemSplitted.split({ type: "lines", linesClass: "lineChild" });
-			tl.from(itemSplitted.lines, {
-				duration: 1,
-				delay: 0.5,
-				opacity: 0,
-				rotationX: -80,
-				force3D: true,
-				transformOrigin: "top center -50",
-				stagger: 0.1,
-			});
-			});
-		
-			if ($('.title-anime-2').length > 0) {
-			// Title Animation-2
-			let char_come = gsap.utils.toArray(".title-anime-2");
-			char_come.forEach(splitTextLine => {
-				const tl = gsap.timeline({
+			},
+		});
+
+		const itemSplitted = new SplitText(splitTextLine, { type: "lines", linesClass: "lineChild" });
+		gsap.set(splitTextLine, { perspective: 400 });
+		itemSplitted.split({ type: "lines", linesClass: "lineChild" });
+		tl.from(itemSplitted.lines, {
+			duration: 1,
+			delay: 0.5,
+			opacity: 0,
+			rotationX: -80,
+			force3D: true,
+			transformOrigin: "top center -50",
+			stagger: 0.1,
+		});
+	});
+
+	if ($('.title-anime-2').length > 0) {
+		// Title Animation-2
+		let char_come = gsap.utils.toArray(".title-anime-2");
+		char_come.forEach(splitTextLine => {
+			const tl = gsap.timeline({
 				scrollTrigger: {
 					trigger: splitTextLine,
 					start: 'top 90%',
@@ -1391,11 +1483,11 @@
 					markers: false,
 					toggleActions: 'play none none none'
 				}
-				});
-				const itemSplitted = new SplitText(splitTextLine, { type: "chars, words" });
-				gsap.set(splitTextLine, { perspective: 300 });
-				itemSplitted.split({ type: "chars, words" })
-				tl.from(itemSplitted.chars,
+			});
+			const itemSplitted = new SplitText(splitTextLine, { type: "chars, words" });
+			gsap.set(splitTextLine, { perspective: 300 });
+			itemSplitted.split({ type: "chars, words" })
+			tl.from(itemSplitted.chars,
 				{
 					duration: 1.2,
 					opacity: 0,
@@ -1405,120 +1497,120 @@
 					transformOrigin: "0% 30% -30%",
 					stagger: 0.02
 				});
-			});
-			}
+		});
+	}
 
 
-		   // Fade in Left Animation
-			let fadeLeft = document.getElementsByClassName("fadeLeft");
-			if(fadeLeft){
-				gsap.set(fadeLeft, { x:-100, autoAlpha: 0 });
-			
-				const fadeLeftArray = gsap.utils.toArray(fadeLeft)
-				fadeLeftArray.forEach((item, i) => {
-					let fadeTl = gsap.timeline({
-					scrollTrigger: {
-						trigger: item,
-						start: "top bottom-=150",
-					}
-					})
-					fadeTl.to(item, {
-					x: 0,
-					autoAlpha: 1,
-					ease: "power2.out",
-					duration: 1.3,
-					})
-				})
-			}
+	// Fade in Left Animation
+	let fadeLeft = document.getElementsByClassName("fadeLeft");
+	if (fadeLeft) {
+		gsap.set(fadeLeft, { x: -100, autoAlpha: 0 });
 
-
-			// fade in right animation
-			let fadeRight = document.getElementsByClassName("fadeRight");
-
-			if(fadeRight){
-				gsap.set(fadeRight, { x:100, autoAlpha: 0 });
-
-				const fadeRightArray = gsap.utils.toArray(fadeRight)
-				fadeRightArray.forEach((item, i) => {
-				let fadeTl = gsap.timeline({
-					scrollTrigger: {
-					trigger: item,
-					start: "top bottom-=150",
-					}
-				})
-				fadeTl.to(item, {
-					x: 0,
-					autoAlpha: 1,
-					ease: "power2.out",
-					duration: 1.3,
-				})
-				})
-			}
-
-
-			// fade in up animate
-			gsap.set(".fadeUp", { y: 30, opacity: 0 });
-			const fadeUpArray = gsap.utils.toArray(".fadeUp")
-			fadeUpArray.forEach((item, i) => {
-				let fadeTl = gsap.timeline({
+		const fadeLeftArray = gsap.utils.toArray(fadeLeft)
+		fadeLeftArray.forEach((item, i) => {
+			let fadeTl = gsap.timeline({
 				scrollTrigger: {
 					trigger: item,
 					start: "top bottom-=150",
 				}
-				})
-				fadeTl.to(item, {
-				y: 0,
-				opacity: 1,
+			})
+			fadeTl.to(item, {
+				x: 0,
+				autoAlpha: 1,
 				ease: "power2.out",
 				duration: 1.3,
-				})
 			})
+		})
+	}
 
-			// fade one by one animation
-			var oneByOne = document.querySelectorAll('.OneByOne');
-			gsap.set(oneByOne, { x: -30, opacity: 0 });
-			gsap.to(oneByOne, {
-			  scrollTrigger: {
-				trigger: oneByOne,
-				start: "top center+=250",
-			  },
-			  x: 0,
-			  opacity: 1,
-			  ease: "back.out(1)",
-			  duration: 1,
-			  stagger: 0.3,
+
+	// fade in right animation
+	let fadeRight = document.getElementsByClassName("fadeRight");
+
+	if (fadeRight) {
+		gsap.set(fadeRight, { x: 100, autoAlpha: 0 });
+
+		const fadeRightArray = gsap.utils.toArray(fadeRight)
+		fadeRightArray.forEach((item, i) => {
+			let fadeTl = gsap.timeline({
+				scrollTrigger: {
+					trigger: item,
+					start: "top bottom-=150",
+				}
 			})
+			fadeTl.to(item, {
+				x: 0,
+				autoAlpha: 1,
+				ease: "power2.out",
+				duration: 1.3,
+			})
+		})
+	}
+
+
+	// fade in up animate
+	gsap.set(".fadeUp", { y: 30, opacity: 0 });
+	const fadeUpArray = gsap.utils.toArray(".fadeUp")
+	fadeUpArray.forEach((item, i) => {
+		let fadeTl = gsap.timeline({
+			scrollTrigger: {
+				trigger: item,
+				start: "top bottom-=150",
+			}
+		})
+		fadeTl.to(item, {
+			y: 0,
+			opacity: 1,
+			ease: "power2.out",
+			duration: 1.3,
+		})
+	})
+
+	// fade one by one animation
+	var oneByOne = document.querySelectorAll('.OneByOne');
+	gsap.set(oneByOne, { x: -30, opacity: 0 });
+	gsap.to(oneByOne, {
+		scrollTrigger: {
+			trigger: oneByOne,
+			start: "top center+=250",
+		},
+		x: 0,
+		opacity: 1,
+		ease: "back.out(1)",
+		duration: 1,
+		stagger: 0.3,
+	})
 
 
 
-		// scrollTo moving
-		var controller = new ScrollMagic.Controller();
+	// scrollTo moving
+	var controller = new ScrollMagic.Controller();
 
-		if ($('.scroll-moving-text').length > 0) {
-		$(".scroll-moving-text").each( function () {
+	if ($('.scroll-moving-text').length > 0) {
+		$(".scroll-moving-text").each(function () {
 			var $this = $(this);
-			var $thisheight =  $(this).height() + window.innerHeight;
+			var $thisheight = $(this).height() + window.innerHeight;
 			var $thiswidth = $(this).outerWidth(true) - window.innerWidth;
 			// Add tweenmax for backgroundParallax
-			gsap.set($this,{x:-$thiswidth});
-			var parallax = gsap.to( $this, 1, {x: 0 , ease:Linear.easeNone});
-			
+			gsap.set($this, { x: -$thiswidth });
+			var parallax = gsap.to($this, 1, { x: 0, ease: Linear.easeNone });
+
 			// Create scrollmagic scene
 			var parallaxScene = new ScrollMagic.Scene({
 				triggerElement: this, // <-- Use this to select current element
 				triggerHook: 1,
-				duration:$thisheight,
+				duration: $thisheight,
 			})
-			.setTween(parallax)
-			.addTo(controller);
-			
+				.setTween(parallax)
+				.addTo(controller);
+
 			if ($("body").hasClass("smooth-scroll")) {
 				scrollbar.addListener(() => {
 					parallaxScene.refresh()
 				});
 			}
 		});
-		}
+	}
 
 
 	// document.addEventListener('contextmenu', function(event) {
