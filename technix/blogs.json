@@ -1,0 +1,93 @@
+[
+    {
+        "id": 1,
+        "title": "The Art of Cooking",
+        "blog": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut diam a ex tincidunt pellentesque. Fusce posuere elementum neque nec sagittis. Nam a bibendum nulla. Duis scelerisque massa nec mauris dapibus elementum. Etiam non lacinia velit. Nulla facilisi. Donec laoreet congue metus ac iaculis. Vivamus tempor libero at ex tincidunt egestas. Curabitur efficitur consectetur tortor, in semper mauris pellentesque eu. Phasellus pellentesque malesuada placerat.",
+        "author": "John Doe",
+        "date": "2023-06-20",
+        "tags": [
+            "cooking",
+            "recipes",
+            "food"
+        ],
+        "image": "assets/img/blog/blog-img-3.jpg"
+    },
+    {
+        "id": 2,
+        "title": "Traveling on a Budget",
+        "blog": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut diam a ex tincidunt pellentesque. Fusce posuere elementum neque nec sagittis. Nam a bibendum nulla. Duis scelerisque massa nec mauris dapibus elementum. Etiam non lacinia velit. Nulla facilisi. Donec laoreet congue metus ac iaculis. Vivamus tempor libero at ex tincidunt egestas. Curabitur efficitur consectetur tortor, in semper mauris pellentesque eu. Phasellus pellentesque malesuada placerat.",
+        "author": "Jane Smith",
+        "date": "2023-06-22",
+        "tags": [
+            "travel",
+            "budget",
+            "adventure"
+        ],
+        "image": "assets/img/blog/blog-img-3.jpg"
+    },
+    {
+        "id": 3,
+        "title": "The Benefits of Yoga",
+        "blog": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut diam a ex tincidunt pellentesque. Fusce posuere elementum neque nec sagittis. Nam a bibendum nulla. Duis scelerisque massa nec mauris dapibus elementum. Etiam non lacinia velit. Nulla facilisi. Donec laoreet congue metus ac iaculis. Vivamus tempor libero at ex tincidunt egestas. Curabitur efficitur consectetur tortor, in semper mauris pellentesque eu. Phasellus pellentesque malesuada placerat.",
+        "author": "Emily Johnson",
+        "date": "2023-06-24",
+        "tags": [
+            "yoga",
+            "mindfulness",
+            "wellness"
+        ],
+        "image": "assets/img/blog/blog-img-3.jpg"
+    },
+    {
+        "id": 4,
+        "title": "Tips for Effective Time Management",
+        "blog": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut diam a ex tincidunt pellentesque. Fusce posuere elementum neque nec sagittis. Nam a bibendum nulla. Duis scelerisque massa nec mauris dapibus elementum. Etiam non lacinia velit. Nulla facilisi. Donec laoreet congue metus ac iaculis. Vivamus tempor libero at ex tincidunt egestas. Curabitur efficitur consectetur tortor, in semper mauris pellentesque eu. Phasellus pellentesque malesuada placerat.",
+        "author": "David Williams",
+        "date": "2023-06-26",
+        "tags": [
+            "productivity",
+            "time management",
+            "organization"
+        ],
+        "image": "assets/img/blog/blog-img-3.jpg"
+    },
+    {
+        "id": 5,
+        "title": "The Benefits of Regular Exercise",
+        "blog": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut diam a ex tincidunt pellentesque. Fusce posuere elementum neque nec sagittis. Nam a bibendum nulla. Duis scelerisque massa nec mauris dapibus elementum. Etiam non lacinia velit. Nulla facilisi. Donec laoreet congue metus ac iaculis. Vivamus tempor libero at ex tincidunt egestas. Curabitur efficitur consectetur tortor, in semper mauris pellentesque eu. Phasellus pellentesque malesuada placerat.",
+        "author": "Michael Anderson",
+        "date": "2023-06-28",
+        "tags": [
+            "exercise",
+            "fitness",
+            "health"
+        ],
+        "image": "assets/img/blog/blog-img-3.jpg"
+    },
+    {
+        "id": 6,
+        "title": "The Impact of Social Media on Society",
+        "blog": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut diam a ex tincidunt pellentesque. Fusce posuere elementum neque nec sagittis. Nam a bibendum nulla. Duis scelerisque massa nec mauris dapibus elementum. Etiam non lacinia velit. Nulla facilisi. Donec laoreet congue metus ac iaculis. Vivamus tempor libero at ex tincidunt egestas. Curabitur efficitur consectetur tortor, in semper mauris pellentesque eu. Phasellus pellentesque malesuada placerat.",
+        "author": "Sophia Thompson",
+        "date": "2023-06-30",
+        "tags": [
+            "social media",
+            "society",
+            "technology"
+        ],
+        "image": "assets/img/blog/blog-img-3.jpg"
+    },
+    {
+        "id": 7,
+        "title": "Tips for Effective Communication",
+        "blog": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut diam a ex tincidunt pellentesque. Fusce posuere elementum neque nec sagittis. Nam a bibendum nulla. Duis scelerisque massa nec mauris dapibus elementum. Etiam non lacinia velit. Nulla facilisi. Donec laoreet congue metus ac iaculis. Vivamus tempor libero at ex tincidunt egestas. Curabitur efficitur consectetur tortor, in semper mauris pellentesque eu. Phasellus pellentesque malesuada placerat.",
+        "author": "Oliver Davis",
+        "date": "2023-07-02",
+        "tags": [
+            "communication",
+            "interpersonal skills",
+            "relationships"
+        ],
+        "image": "assets/img/blog/blog-img-3.jpg"
+    }
+]
