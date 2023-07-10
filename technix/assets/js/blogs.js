@@ -105,7 +105,7 @@ document.addEventListener('DOMContentLoaded', function() {
                   </div>
                 </div>
                 <h3 class="tp-blog-title">
-                  <a href="blog-details.html">${blog.title}</a>
+                  <a href="blog-details.html?blog=${blog.id}" >${blog.title}</a>
                 </h3>
                 <div class="tp-blog-btn d-flex justify-content-between">
                   <div class="read-more p-relative">
@@ -130,6 +130,42 @@ document.addEventListener('DOMContentLoaded', function() {
             });
           });
       }
-  });
+      else if(window.location.pathname.includes('blog-details.html')){
+        const params = new URLSearchParams(window.location.search);
+        const blogid = params.get('blog');
+        // console.log(blogid)
+
+        fetch('blogs.json')
+        .then(function (response) {
+          return response.json();
+        })
+        .then(function (data) {
+          const blog = data.find(function (item) {
+            // console.log(item.id)
+            return item.id === blogid;
+          });
+          // console.log(blog)
+          if (blog) {
+            displayBlogDetails(blog);
+          } else {
+            document.getElementById("blog_title").textContent =
+              "Service not found.";
+          }
+        })
+        .catch(function (error) {
+          console.error("Error:", error);
+          document.getElementById("service-detail-container").textContent =
+            "An error occurred.";
+        });
+  }});
+
+
+function displayBlogDetails(blog){
+    const title = document.getElementById('blog_title')
+    const description = document.getElementById('blog_description')
+
+    title.textContent = blog.title
+    description.textContent = blog.blog
+}
   
 

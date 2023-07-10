@@ -1,6 +1,6 @@
 [
     {
-        "id": 1,
+        "id": "1",
         "title": "The Art of Cooking",
         "blog": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut diam a ex tincidunt pellentesque. Fusce posuere elementum neque nec sagittis. Nam a bibendum nulla. Duis scelerisque massa nec mauris dapibus elementum. Etiam non lacinia velit. Nulla facilisi. Donec laoreet congue metus ac iaculis. Vivamus tempor libero at ex tincidunt egestas. Curabitur efficitur consectetur tortor, in semper mauris pellentesque eu. Phasellus pellentesque malesuada placerat.",
         "author": "John Doe",
@@ -13,7 +13,7 @@
         "image": "assets/img/blog/blog-img-3.jpg"
     },
     {
-        "id": 2,
+        "id": "2",
         "title": "Traveling on a Budget",
         "blog": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut diam a ex tincidunt pellentesque. Fusce posuere elementum neque nec sagittis. Nam a bibendum nulla. Duis scelerisque massa nec mauris dapibus elementum. Etiam non lacinia velit. Nulla facilisi. Donec laoreet congue metus ac iaculis. Vivamus tempor libero at ex tincidunt egestas. Curabitur efficitur consectetur tortor, in semper mauris pellentesque eu. Phasellus pellentesque malesuada placerat.",
         "author": "Jane Smith",
@@ -26,7 +26,7 @@
         "image": "assets/img/blog/blog-img-3.jpg"
     },
     {
-        "id": 3,
+        "id": "3",
         "title": "The Benefits of Yoga",
         "blog": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut diam a ex tincidunt pellentesque. Fusce posuere elementum neque nec sagittis. Nam a bibendum nulla. Duis scelerisque massa nec mauris dapibus elementum. Etiam non lacinia velit. Nulla facilisi. Donec laoreet congue metus ac iaculis. Vivamus tempor libero at ex tincidunt egestas. Curabitur efficitur consectetur tortor, in semper mauris pellentesque eu. Phasellus pellentesque malesuada placerat.",
         "author": "Emily Johnson",
@@ -39,7 +39,7 @@
         "image": "assets/img/blog/blog-img-3.jpg"
     },
     {
-        "id": 4,
+        "id": "4",
         "title": "Tips for Effective Time Management",
         "blog": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut diam a ex tincidunt pellentesque. Fusce posuere elementum neque nec sagittis. Nam a bibendum nulla. Duis scelerisque massa nec mauris dapibus elementum. Etiam non lacinia velit. Nulla facilisi. Donec laoreet congue metus ac iaculis. Vivamus tempor libero at ex tincidunt egestas. Curabitur efficitur consectetur tortor, in semper mauris pellentesque eu. Phasellus pellentesque malesuada placerat.",
         "author": "David Williams",
@@ -52,7 +52,7 @@
         "image": "assets/img/blog/blog-img-3.jpg"
     },
     {
-        "id": 5,
+        "id": "5",
         "title": "The Benefits of Regular Exercise",
         "blog": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut diam a ex tincidunt pellentesque. Fusce posuere elementum neque nec sagittis. Nam a bibendum nulla. Duis scelerisque massa nec mauris dapibus elementum. Etiam non lacinia velit. Nulla facilisi. Donec laoreet congue metus ac iaculis. Vivamus tempor libero at ex tincidunt egestas. Curabitur efficitur consectetur tortor, in semper mauris pellentesque eu. Phasellus pellentesque malesuada placerat.",
         "author": "Michael Anderson",
@@ -65,7 +65,7 @@
         "image": "assets/img/blog/blog-img-3.jpg"
     },
     {
-        "id": 6,
+        "id": "6",
         "title": "The Impact of Social Media on Society",
         "blog": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut diam a ex tincidunt pellentesque. Fusce posuere elementum neque nec sagittis. Nam a bibendum nulla. Duis scelerisque massa nec mauris dapibus elementum. Etiam non lacinia velit. Nulla facilisi. Donec laoreet congue metus ac iaculis. Vivamus tempor libero at ex tincidunt egestas. Curabitur efficitur consectetur tortor, in semper mauris pellentesque eu. Phasellus pellentesque malesuada placerat.",
         "author": "Sophia Thompson",
@@ -78,7 +78,7 @@
         "image": "assets/img/blog/blog-img-3.jpg"
     },
     {
-        "id": 7,
+        "id": "7",
         "title": "Tips for Effective Communication",
         "blog": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut diam a ex tincidunt pellentesque. Fusce posuere elementum neque nec sagittis. Nam a bibendum nulla. Duis scelerisque massa nec mauris dapibus elementum. Etiam non lacinia velit. Nulla facilisi. Donec laoreet congue metus ac iaculis. Vivamus tempor libero at ex tincidunt egestas. Curabitur efficitur consectetur tortor, in semper mauris pellentesque eu. Phasellus pellentesque malesuada placerat.",
         "author": "Oliver Davis",
