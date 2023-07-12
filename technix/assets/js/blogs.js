@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', function() {
                  <p>${blog.blog}</p>
               </div>
               <div class="postbox__read-more">
-                 <a href="blog-details.html" class="tp-btn">read more</a>
+                 <a href="blog-details.html?blog=${blog.id}" class="tp-btn">read more</a>
               </div>
             </div>`;
   
@@ -89,7 +89,7 @@ document.addEventListener('DOMContentLoaded', function() {
               const cardcontent = `
               <div class="tp-blog-wrapper mb-30">
               <div class="tp-blog-thumb">
-                <a href="blog-details.html"><img src="assets/img/blog/img-1.jpg" alt="" /></a>
+                <a href="blog-details.html"><img src="${blog.image}" alt="" /></a>
                 <div class="tp-blog-tag">
                   <p>Business</p>
                 </div>
@@ -109,7 +109,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 </h3>
                 <div class="tp-blog-btn d-flex justify-content-between">
                   <div class="read-more p-relative">
-                    <a href="blog-details.html">Read MOre
+                    <a href="blog-details.html?blog=${blog.id}">Read MOre
                       <span><svg width="39" height="8" viewBox="0 0 39 8" fill="none"
                           xmlns="http://www.w3.org/2000/svg">
                           <path
@@ -140,8 +140,9 @@ document.addEventListener('DOMContentLoaded', function() {
           return response.json();
         })
         .then(function (data) {
+          // console.log(data)
           const blog = data.find(function (item) {
-            // console.log(item.id)
+            console.log(blogid)
             return item.id === blogid;
           });
           // console.log(blog)
@@ -149,7 +150,7 @@ document.addEventListener('DOMContentLoaded', function() {
             displayBlogDetails(blog);
           } else {
             document.getElementById("blog_title").textContent =
-              "Service not found.";
+              "blog not found.";
           }
         })
         .catch(function (error) {
@@ -163,9 +164,21 @@ document.addEventListener('DOMContentLoaded', function() {
 function displayBlogDetails(blog){
     const title = document.getElementById('blog_title')
     const description = document.getElementById('blog_description')
+    const img = document.getElementById('blog_img')
+    const blogDate = document.getElementById('blog_date')
+    const blogTags = document.getElementById('blog_tags')
+    // console.log(blog.image)
 
     title.textContent = blog.title
     description.textContent = blog.blog
+    blogDate.textContent = blog.date
+    img.src= blog.image
+
+    var tagsHTML = ""
+    blog.tags.forEach(element => {
+      tagsHTML += `<a href="#">${element}</a>`
+    });
+    blogTags.innerHTML = tagsHTML
 }
   
 
