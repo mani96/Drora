@@ -21,18 +21,28 @@ document.addEventListener("DOMContentLoaded", function () {
           const cardElement = document.createElement("div");
           cardElement.classList.add("col-xl-3", "col-lg-4", "col-md-6");
 
+  //         const cardContent = `
+  //   <div class="tp-service-3-content breadcrumb-item mb-30 service-card">
+  //     <div class="tp-service-3-content-thumb">
+  //       <img src="assets/img/services/home-3/icon-1.png" alt="">
+  //     </div>
+  //     <h4 class="tp-service-breadcrumb-title"><a href="service-details.html?service=${service.id}" class="service-link" data-service-id="${service.id}">${service.name}</a></h4>
+  //     <p>${truncatedDescription}</p>
+  //     <div class="tp-service-btn">
+  //       <a href="service-details.html?service=${service.id}" class="service-link" data-service-id="${service.id}">Read More <i class="fa-solid fa-arrow-up-right"></i></a>
+  //     </div>
+  //   </div>
+  // `;
+
           const cardContent = `
-    <div class="tp-service-3-content breadcrumb-item mb-30 service-card">
-      <div class="tp-service-3-content-thumb">
-        <img src="assets/img/services/home-3/icon-1.png" alt="">
-      </div>
-      <h4 class="tp-service-breadcrumb-title"><a href="service-details.html?service=${service.id}" class="service-link" data-service-id="${service.id}">${service.name}</a></h4>
-      <p>${truncatedDescription}</p>
-      <div class="tp-service-btn">
-        <a href="service-details.html?service=${service.id}" class="service-link" data-service-id="${service.id}">Read More <i class="fa-solid fa-arrow-up-right"></i></a>
-      </div>
-    </div>
-  `;
+            <div class="tp-service-3-content breadcrumb-item mb-30 service-card">
+              <div class="tp-service-3-content-thumb">
+                <img src="assets/img/services/home-3/icon-1.png" alt="">
+              </div>
+              <h4 class="tp-service-breadcrumb-title"><a href="service-details.html?service=${service.id}" class="service-link" data-service-id="${service.id}">${service.name}</a></h4>
+              <p>${truncatedDescription}</p>
+            </div>
+          `;
 
           cardElement.innerHTML = cardContent;
           container.appendChild(cardElement);

@@ -11806,6 +11806,7 @@ div.demo img {
 .tp-industry-area {
   background: rgba(232, 247, 253, 0.5);
   overflow: hidden;
+  margin-top: 30px;
 }
 .tp-industry-shape .shape-1 {
   position: absolute;
