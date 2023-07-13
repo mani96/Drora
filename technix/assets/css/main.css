@@ -6700,8 +6700,8 @@ div.demo img {
 }
 .tp-hero-content {
   z-index: 1;
-  padding-top: 230px;
-  padding-bottom: 262px;
+  padding-top: 130px;
+  padding-bottom: 180px;
 }
 @media only screen and (min-width: 992px) and (max-width: 1199px), only screen and (min-width: 768px) and (max-width: 991px), only screen and (min-width: 576px) and (max-width: 767px), (max-width: 575px) {
   .tp-hero-content {
@@ -6845,10 +6845,10 @@ div.demo img {
 }
 .tp-hero-shape-animation span {
   background-color: #EAF3FB;
-  height: 610px;
+  height: 530px;
   width: 648px;
   position: absolute;
-  top: 100px;
+  top: 60px;
   left: -115px;
   border-radius: 62% 47% 82% 35%/45% 45% 80% 66%;
   will-change: border-radius, transform, opacity;
@@ -6858,16 +6858,16 @@ div.demo img {
 }
 @media only screen and (min-width: 1400px) and (max-width: 1599px) {
   .tp-hero-shape-animation span {
-    height: 590px;
-    width: 600px;
+    height: 530px;
+    width: 630px;
     left: -50px;
     /* padding-left: 0px !important; */
   }
 }
 @media only screen and (min-width: 1200px) and (max-width: 1399px) {
   .tp-hero-shape-animation span {
-    height: 500px;
-    width: 520px;
+    height: 520px;
+    width: 580px;
     left: -35px;
   }
 }
