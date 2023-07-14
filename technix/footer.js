@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
   // Create a footer element
   var footer = document.createElement("footer");
-  footer.className = "tp-footer-3-area p-relative";
+//   footer.className = "tp-footer-3-area p-relative";
 
   // Set the inner HTML of the footer
   footer.innerHTML = `
