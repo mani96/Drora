@@ -94,7 +94,7 @@ document.addEventListener("DOMContentLoaded", function () {
   
              <div class="col-lg-4 col-md-6">
               <div class="tp-footer-widget tp-footer-3-col-2">
-                 <h3 class="tp-footer-widget-title">Services </h3>
+                 <h3 class="tp-footer-widget-title">Industries </h3>
                  <div class="tp-footer-widget-content">
                     <ul>
                        <li><a href="#">Technology</a></li>
