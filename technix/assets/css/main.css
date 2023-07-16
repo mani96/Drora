@@ -7992,6 +7992,7 @@ div.demo img {
 .tp-feature-3-area {
   position: relative;
   background: var(--tp-bg-primary);
+  margin-top: -100px;
 }
 @media (max-width: 575px) {
   .tp-feature-3-area {
@@ -12413,7 +12414,8 @@ div.demo img {
 }
 .tp-cta-4-wrapper-left {
   position: relative;
-  padding: 51px 15px 50px 55px;
+  /* padding: 51px 15px 50px 55px; */
+  padding: 51px 3px 50px 8px;
   background: var(--tp-theme-secondary);
 }
 @media (max-width: 575px) {
