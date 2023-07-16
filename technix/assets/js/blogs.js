@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function() {
             <div class="postbox__content">
               <div class="postbox__meta">
                  <span><i class="fa-light fa-calendar-days"></i> 02 Apr 2021</span>
-                 <span><a href="#"><i class="fal fa-comments"></i> Comments (03)</a></span>
+                <!-- <span><a href="#"><i class="fal fa-comments"></i> Comments (03)</a></span> -->
                  <span><a href="#"><i class="fa-regular fa-clock"></i> 3 min Read</a></span>
               </div>
               <h3 class="postbox__title">${blog.title}</h3>
@@ -100,8 +100,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     <span><i class="fa-light fa-calendar-days"></i> ${blog.date}
                     </span>
                     <span>-</span>
-                    <span><i class="fa-sharp fa-solid fa-comments"></i> Comments
-                      (03)</span>
+                    <!-- <span><i class="fa-sharp fa-solid fa-comments"></i> Comments
+                      (03)</span> -->
                   </div>
                 </div>
                 <h3 class="tp-blog-title">
