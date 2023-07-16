@@ -179,6 +179,14 @@ li,
 /*---------------------------------
 	typography css start 
 ---------------------------------*/
+
+
+.logo{
+  height: 50px;
+  
+}
+
+
 body {
   font-family: var(--tp-ff-body);
   font-size: var(--tp-fz-body);
