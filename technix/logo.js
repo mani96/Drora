@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
   logoContainer.innerHTML = `
     <div class="tp-header-logo ms-xxl-5 ms-xl-5">
       <a href="index.html">
-        <h2>Drora</h2>
+      <img src="assets/img/logo/Asset 5.png" alt="Drora" class='logo'>
       </a>
     </div>
   `;

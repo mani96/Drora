@@ -14,8 +14,8 @@ document.addEventListener("DOMContentLoaded", function () {
             <div class="col-lg-4 col-md-6">
                <div class="tp-footer-widget tp-footer-3-col-1">
                   <div class="tp-footer-logo">
-                  <!-- <a href="index.html"> <img src="assets/img/logo/footer-logo.png" alt=""></a>-->
-                  <h2 style="color: white;">Drora</h2>
+                   <a href="index.html"><img src="assets/img/logo/Asset 6.png" alt="Drora" class='logo'></a>
+                  
                   </div>
                   <div class="tp-footer-widget-content">
                      <div class="tp-footer-info">
