@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function () {
                            </a>
                         </div> -->
                         <div class="tp-footer-main-mail">
-                           <a href="mailto:needhelp@company.com"><i class="fa-light fa-message-dots"></i> tanvirbhatti682@gmail.com <br> +1 647 461 8196</a>
+                           <a href="mailto:needhelp@company.com"><i class="fa-light fa-message-dots"></i> droracontact@gmail.com <br> +1 647 461 8196</a>
                         </div>
                      </div>
                   </div>
