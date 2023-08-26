@@ -14,7 +14,7 @@
     var emailData = {
       personalizations: [
         {
-          to: [{ email: "tanvirbhatti8196@gmail.com" }] // Replace with the recipient's email address
+          to: [{ email: "droracontact@gmail.com" }] // Replace with the recipient's email address
         }
       ],
       from: { email: email }, // Replace with your sender email address
