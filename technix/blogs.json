@@ -1,8 +1,8 @@
 [
     {
         "id": "1",
-        "title": "The Art of Cooking",
-        "blog": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut diam a ex tincidunt pellentesque. Fusce posuere elementum neque nec sagittis. Nam a bibendum nulla. Duis scelerisque massa nec mauris dapibus elementum. Etiam non lacinia velit. Nulla facilisi. Donec laoreet congue metus ac iaculis. Vivamus tempor libero at ex tincidunt egestas. Curabitur efficitur consectetur tortor, in semper mauris pellentesque eu. Phasellus pellentesque malesuada placerat.",
+        "title": "Demystifying Artificial Intelligence",
+        "blog": "In the ever-evolving realm of technology, few terms have garnered as much attention and intrigue as Artificial Intelligence or AI. It's a buzzword that's not just limited to tech enthusiasts and experts; it's rapidly shaping the future of businesses across industries. But what exactly is AI, and how is it transforming the business landscape?",
         "author": "John Doe",
         "date": "2023-06-20",
         "tags": [
@@ -14,8 +14,8 @@
     },
     {
         "id": "2",
-        "title": "Traveling on a Budget",
-        "blog": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut diam a ex tincidunt pellentesque. Fusce posuere elementum neque nec sagittis. Nam a bibendum nulla. Duis scelerisque massa nec mauris dapibus elementum. Etiam non lacinia velit. Nulla facilisi. Donec laoreet congue metus ac iaculis. Vivamus tempor libero at ex tincidunt egestas. Curabitur efficitur consectetur tortor, in semper mauris pellentesque eu. Phasellus pellentesque malesuada placerat.",
+        "title": "IT Budgeting Strategies",
+        "blog": "Unlocking the full potential of your business's technology investments begins with smart IT budgeting strategies. In our latest blog, we delve into the art of allocating resources wisely to maximize ROI. Discover how to strike the perfect balance between innovation and fiscal responsibility, ensuring your tech investments drive growth and efficiency. Stay ahead of the curve with our expert insights on IT budget optimization.",
         "author": "Jane Smith",
         "date": "2023-06-22",
         "tags": [
@@ -27,8 +27,8 @@
     },
     {
         "id": "3",
-        "title": "The Benefits of Yoga",
-        "blog": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut diam a ex tincidunt pellentesque. Fusce posuere elementum neque nec sagittis. Nam a bibendum nulla. Duis scelerisque massa nec mauris dapibus elementum. Etiam non lacinia velit. Nulla facilisi. Donec laoreet congue metus ac iaculis. Vivamus tempor libero at ex tincidunt egestas. Curabitur efficitur consectetur tortor, in semper mauris pellentesque eu. Phasellus pellentesque malesuada placerat.",
+        "title": "Cloud-Native Technologies",
+        "blog": "Embrace the future of IT with our latest blog on Cloud-Native Technologies. Explore how these innovative solutions are revolutionizing businesses in the Cloud Era. Discover the agility, scalability, and cost-efficiency that cloud-native architecture offers, propelling your innovation journey to new heights. Stay ahead of the competition by harnessing the power of cloud-native technologies today.",
         "author": "Emily Johnson",
         "date": "2023-06-24",
         "tags": [
@@ -53,7 +53,7 @@
     },
     {
         "id": "5",
-        "title": "The Benefits of Regular Exercise",
+        "title": "Hybrid IT Environments",
         "blog": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut diam a ex tincidunt pellentesque. Fusce posuere elementum neque nec sagittis. Nam a bibendum nulla. Duis scelerisque massa nec mauris dapibus elementum. Etiam non lacinia velit. Nulla facilisi. Donec laoreet congue metus ac iaculis. Vivamus tempor libero at ex tincidunt egestas. Curabitur efficitur consectetur tortor, in semper mauris pellentesque eu. Phasellus pellentesque malesuada placerat.",
         "author": "Michael Anderson",
         "date": "2023-06-28",
